@@ -126,6 +126,9 @@ extern "C" {
  *************************************************************************/
 
 #if defined(GLFW_EXPOSE_NATIVE_WIN32)
+
+GLFWAPI void glfwSetWndProcFilterCallback(GLFWwindow * window, WNDPROC callback);
+
 /*! @brief Returns the adapter device name of the specified monitor.
  *
  *  @return The UTF-8 encoded adapter device name (for example `\\.\DISPLAY1`)

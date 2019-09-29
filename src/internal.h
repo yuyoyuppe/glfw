@@ -412,6 +412,9 @@ struct _GLFWwindow
         GLFWcharfun             character;
         GLFWcharmodsfun         charmods;
         GLFWdropfun             drop;
+#if defined(_WIN32)
+        void                  * wndProc;
+#endif
     } callbacks;
 
     // This is defined in the window API's platform.h

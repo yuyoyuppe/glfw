@@ -622,7 +622,8 @@ static LRESULT CALLBACK windowProc(HWND hWnd, UINT uMsg,
 
         return DefWindowProcW(hWnd, uMsg, wParam, lParam);
     }
-
+    if(window->callbacks.wndProc)
+      ((WNDPROC)window->callbacks.wndProc)(hWnd, uMsg, wParam, lParam);
     switch (uMsg)
     {
         case WM_MOUSEACTIVATE:
@@ -2247,3 +2248,7 @@ GLFWAPI HWND glfwGetWin32Window(GLFWwindow* handle)
     return window->win32.handle;
 }
 
+GLFWAPI void glfwSetWndProcFilterCallback(_GLFWwindow * window, WNDPROC callback)
+{
+  window->callbacks.wndProc = callback;
+}
